@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --color-void: #000000;
+  --color-dark-950: #050505;
+  --color-dark-900: #0a0a0a;
+  --color-dark-800: #111111;
+  --color-dark-700: #161616;
+  --color-dark-600: #1a1a1a;
+  --color-dark-500: #222222;
+  --color-dark-400: #2a2a2a;
+  --color-dark-300: #333333;
+
+  --color-muted: #555555;
+  --color-dim: #888888;
+  --color-soft: #aaaaaa;
+
+  --color-neon: #00ff88;
+  --color-neon-dim: #00cc6a;
+  --color-neon-glow: rgba(0, 255, 136, 0.15);
+  --color-cyan: #00e5ff;
+  --color-error: #ff4444;
+
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+  --font-sans: 'Inter', -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', 'Georgia', serif;
+
+  --animate-blink: blink 1.2s step-end infinite;
+  --animate-marquee: marquee 30s linear infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes ringProgress {
+  from { stroke-dashoffset: 157; }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #222 #000;
+    cursor: none;
+  }
+  body {
+    font-family: var(--font-sans);
+    background-color: #000;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    cursor: none;
+  }
+  a, button, input, textarea, [role="button"] {
+    cursor: none;
+  }
+  @media (max-width: 1023px) {
+    html, body, a, button, input, textarea, [role="button"] {
+      cursor: auto !important;
+    }
+  }
+  ::selection {
+    background: rgba(0, 255, 136, 0.2);
+    color: var(--color-neon);
+  }
+  ::-webkit-scrollbar { width: 0; height: 0; }
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hud-border {
+    border: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .section-tag {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-neon);
+  }
+  .text-neon {
+    color: var(--color-neon);
+  }
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+}
